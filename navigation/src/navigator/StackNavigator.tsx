@@ -8,10 +8,30 @@ const Stack = createNativeStackNavigator();
 
 export const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Page1Screen} />
-      <Stack.Screen name="Details" component={Page2Screen} />
-      <Stack.Screen name="Page3" component={Page3Screen} />
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerStyle: {
+          elevation: 0,
+          shadowColor: 'transparent',
+        },
+        cardStyle: {backgroundColor: 'white'},
+      }}>
+      <Stack.Screen
+        name="Home"
+        component={Page1Screen}
+        options={{title: 'Page 1'}}
+      />
+      <Stack.Screen
+        name="Details"
+        component={Page2Screen}
+        options={{title: 'Page 2'}}
+      />
+      <Stack.Screen
+        name="Page3"
+        component={Page3Screen}
+        options={{title: 'Page 3'}}
+      />
     </Stack.Navigator>
   );
 };
