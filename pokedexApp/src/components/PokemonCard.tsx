@@ -1,21 +1,27 @@
 import {
-  View, Text,
-  StyleSheet, Image,
-  TouchableWithoutFeedback
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableWithoutFeedback,
 } from 'react-native'
 import React from 'react'
 import _ from 'lodash'
+import { useNavigation } from '@react-navigation/native'
 
 import getColorByPokemonType from '../utils/getColorByPokemonType'
 
+
 export default function PokemonCard({ pokemon }) {
+  const navigation = useNavigation();
 
   const goToPokemon = () => {
-    console.log('vamos al pokemon', pokemon.name)
+    navigation.navigate("Pokemon", { id: pokemon.id });
   }
+
   const pokemonColor = getColorByPokemonType(pokemon.type)
 
-  const bgStyle = { backgroundColor : pokemonColor, ...styles.bgStyles}
+  const bgStyle = { backgroundColor: pokemonColor, ...styles.bgStyles }
   return (
     <TouchableWithoutFeedback onPress={goToPokemon}>
       <View style={styles.card}>
@@ -42,7 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5
   },
-  bgStyles:{
+  bgStyles: {
     flex: 1,
     borderRadius: 15,
     padding: 10
